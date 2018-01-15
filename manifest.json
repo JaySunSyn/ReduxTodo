@@ -1,0 +1,6 @@
+{
+  "name": "ReduxTodo",
+  "short_name": "ReduxTodo",
+  "start_url": "/",
+  "display": "standalone"
+}

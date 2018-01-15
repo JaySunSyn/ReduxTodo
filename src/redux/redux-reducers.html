@@ -1,0 +1,63 @@
+<script src="../../node_modules/redux/dist/redux.min.js"></script>
+<script src="../../node_modules/redux-thunk/dist/redux-thunk.min.js"></script>
+
+<script>
+	(() => {
+		const initialState = {
+			todos: [],
+			people: [
+				'Jalal',
+				'Laila',
+				'Jamila',
+			],
+		};
+
+		const todoReducer = (state, action) => {
+			if (!state) return initialState;
+			let todos = state.todos.slice(0);
+
+			switch (action.type) {
+			case 'LOAD_TODOS_REQUEST':
+				console.log('LOAD_TODOS_REQUEST');
+				return state;
+	
+			case 'LOAD_TODOS_SUCCESS':
+				if (!action.json) {
+					return Object.assign({}, state, {todos: []});
+				}
+				todos = Object.keys(action.json).map(k => {
+					return {
+						text: action.json[k].text,
+						key: k,
+					};
+				});
+				return Object.assign({}, state, {todos: todos});
+	
+			case 'LOAD_TODOS_FAILURE':
+				console.log('LOAD_TODOS_FAILURE', action.error);
+				return state;
+	
+			case 'ADD_TODOS_REQUEST':
+				console.log('ADD_TODOS_REQUEST');
+				return state;
+	
+			case 'ADD_TODOS_SUCCESS':
+				console.log('ADD_TODOS_SUCCESS');
+				return state;
+
+			case 'ADD_TODOS_FAILURE':
+				console.log('ADD_TODOS_FAILURE', action.error);
+				return state;
+
+			default:
+				return state;
+			}
+		};
+
+		window.App = window.App || {};
+
+		App.rootReducer = Redux.combineReducers({
+			todo: todoReducer,
+		});
+	})();
+</script>

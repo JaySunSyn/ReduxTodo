@@ -1,0 +1,44 @@
+{
+  "extends": ["eslint:recommended", "google"],
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "max-len": ["error", 
+      { 
+        "code": 120,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true
+      }
+    ],
+    "indent": [
+      "error",
+      "tab"
+    ],
+    "no-tabs": 0,
+    "brace-style": "off",
+    "new-cap": ["error", { "capIsNewExceptions": ["Polymer"] }],
+    "no-var": "off",
+    "require-jsdoc": "off",
+    "arrow-parens": "off"
+  },
+  "globals": {
+    "Polymer": true,
+    "suite": true,
+    "test": true,
+    "fixture": true,
+    "assert": true,
+    "WCT": true,
+    "App": true,
+    "Redux": true,
+    "Reselect": true,
+    "ReduxThunk": true,
+    "PolymerRedux": true
+  }
+}

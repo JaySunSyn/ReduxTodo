@@ -1,0 +1,41 @@
+{
+	"name": "",
+	"version": "1.0.0",
+	"description": "[![Build Status](https://travis-ci.org/ElfyCares/elfy-address-input.svg?branch=master)](https://travis-ci.org/ElfyCares/elfy-address-input)",
+	"main": "index.html",
+	"directories": {
+		"test": "test"
+	},
+	"devDependencies": {
+		"eslint": "^4.10.0",
+		"eslint-config-google": "^0.9.1",
+		"eslint-plugin-html": "^3.2.2",
+		"eslint-plugin-mocha": "^4.11.0",
+		"polymer-cli": "^1.5.4"
+	},
+	"scripts": {
+		"start": "polymer serve -o",
+		"postinstall": "polymer install",
+		"lint": "eslint --cache --ext .js,.html . && polymer lint elfy-*.html",
+		"test": "polymer test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/elfycares/elfy-address-input.git"
+	},
+	"keywords": [
+		"polymer",
+		"web-components"
+	],
+	"author": "",
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/elfycares/elfy-address-input/issues"
+	},
+	"homepage": "https://github.com/elfycares/elfy-address-input#readme",
+	"dependencies": {
+		"redux": "^3.7.2",
+		"redux-thunk": "^2.2.0",
+		"reselect": "^3.0.1"
+	}
+}

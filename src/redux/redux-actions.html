@@ -1,0 +1,52 @@
+<script>
+  (() => {
+  	const callAPI = (url, params) => fetch(url, params);
+  	const baseUrl = 'https://todo-app-5ac02.firebaseio.com/';
+
+  	const fetchTodos = () => {
+  		return {
+  			// Types of actions to emit before and after
+  			types: ['LOAD_TODOS_REQUEST', 'LOAD_TODOS_SUCCESS', 'LOAD_TODOS_FAILURE'],
+  			// Check the cache (optional):
+  			shouldCallAPI: state => true,
+  			// Perform the fetching:
+  			callAPI: () => callAPI(`${baseUrl}todos.json`),
+  		};
+  	};
+  
+  	const addTodo = (todo) => {
+  		const params = {
+  			method: 'POST',
+  			body: JSON.stringify({text: todo}),
+  		};
+  		return {
+  			// Types of actions to emit before and after
+  			types: ['ADD_TODOS_REQUEST', 'ADD_TODOS_SUCCESS', 'ADD_TODOS_FAILURE'],
+  			// Check the cache (optional):
+  			shouldCallAPI: state => true,
+  			// Perform the fetching:
+  			callAPI: () => callAPI(`${baseUrl}todos.json`, params),
+  		};
+  	};
+
+  	const removeTodo = (todo) => {
+  		const params = {
+  			method: 'DELETE',
+  		};
+  		return {
+  			// Types of actions to emit before and after
+  			types: ['DELETE_TODOS_REQUEST', 'DELETE_TODOS_SUCCESS', 'DELETE_TODOS_FAILURE'],
+  			// Check the cache (optional):
+  			shouldCallAPI: state => true,
+  			// Perform the fetching:
+  			callAPI: () => callAPI(`${baseUrl}todos/${todo.key}.json`, params),
+  		};
+  	};
+
+  	App.actions = {
+  		fetchTodos,
+  		addTodo,
+  		removeTodo,
+  	};
+  })();
+</script>

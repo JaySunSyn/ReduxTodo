@@ -1,0 +1,62 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+
+<link rel="import" href="redux/redux-mixin.html">
+
+<dom-module id="todo-list">
+	<template>
+		<style>
+			:host {
+				display: block
+			}
+
+			li {
+				padding: 12px;
+				cursor: pointer;
+			}
+
+			li:hover {
+				background-color: aqua;
+			}
+		</style>
+		<ul>
+			<template is="dom-repeat" items="[[todos]]" as="todo">
+				<li on-click="_remove">[[todo.text]] <span style="color: white">Remove</span></li>
+			</template>
+		</ul>
+	</template>
+
+	<script>
+		class TodoList extends App.ReduxMixin(Polymer.Element) {
+			static get is() {
+				return 'todo-list';
+			}
+
+			static get properties() {
+				return {
+					todos: {
+						type: Array,
+						statePath: App.select.assignedTodos,
+					},
+				};
+			}
+
+			connectedCallback() {
+				super.connectedCallback();
+				this._fetch();
+			}
+
+			_fetch() {
+				this.dispatch(this.actions.fetchTodos());
+			}
+
+			_remove(e) {
+				this.dispatch(this.actions.removeTodo(e.model.todo)).then(() => {
+					this.dispatch(this.actions.fetchTodos());
+				});
+			}
+		}
+
+		window.customElements.define(TodoList.is, TodoList);
+	</script>
+</dom-module>
