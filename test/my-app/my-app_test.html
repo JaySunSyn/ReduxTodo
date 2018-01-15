@@ -1,53 +1,36 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>my-app test</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../web-component-tester/browser.js"></script>
+  <title>my-app test</title>
 
-    <link rel="import" href="../../src/my-app/my-app.html">
-  </head>
-  <body>
+  <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../web-component-tester/browser.js"></script>
 
-    <test-fixture id="BasicTestFixture">
-      <template>
-        <my-app></my-app>
-      </template>
-    </test-fixture>
+  <link rel="import" href="../../src/my-app/my-app.html">
+</head>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <my-app prop1="new-prop1"></my-app>
-      </template>
-    </test-fixture>
+<body>
 
-    <script>
-      suite('my-app', function() {
+  <test-fixture id="BasicTestFixture">
+    <template>
+      <my-app></my-app>
+    </template>
+  </test-fixture>
 
-        test('instantiating the element with default properties works', function() {
-          var element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'my-app');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello my-app!');
-        });
-
-        test('setting a property on the element works', function() {
-          // Create a test fixture
-          var element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
-        });
-
-      });
-    </script>
+  <script>
+    suite('my-app', function() {
+    	test('instantiating works', function() {
+    		var element = fixture('BasicTestFixture');
+    		assert(element);
+    	});
+    });
+  </script>
 
 
-  </body>
+</body>
+
 </html>

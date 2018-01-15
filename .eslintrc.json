@@ -23,10 +23,11 @@
     ],
     "no-tabs": 0,
     "brace-style": "off",
-    "new-cap": ["error", { "capIsNewExceptions": ["Polymer"] }],
+    "new-cap": ["error", { "capIsNewExceptions": ["Polymer", "PolymerRedux", "ReduxMixin"] }],
     "no-var": "off",
     "require-jsdoc": "off",
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "no-console": "off"
   },
   "globals": {
     "Polymer": true,

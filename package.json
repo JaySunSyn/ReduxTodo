@@ -16,7 +16,7 @@
 	"scripts": {
 		"start": "polymer serve -o",
 		"postinstall": "polymer install",
-		"lint": "eslint --cache --ext .js,.html . && polymer lint elfy-*.html",
+		"lint": "eslint --cache --ext .js,.html . && polymer lint *.html",
 		"test": "polymer test"
 	},
 	"repository": {
