@@ -1,0 +1,24 @@
+<script>
+	(() => {
+		const add = (todo) => {
+			return {
+				type: 'ADD_TODO',
+				todo: {text: todo},
+			};
+		};
+
+		const remove = (todo) => {
+			return {
+				type: 'REMOVE_TODO',
+				todo: todo,
+			};
+		};
+
+		App = window.App || {};
+
+		App.actions = {
+			add,
+			remove,
+		};
+	})();
+</script>

@@ -1,0 +1,26 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer-redux/polymer-redux.html">
+
+<link rel="import" href="redux-reducers.html">
+<link rel="import" href="redux-selectors.html">
+<link rel="import" href="redux-actions.html">
+
+<script>
+  (() => {
+  	App = window.App || {};
+
+  	const store = Redux.createStore(App.rootReducer);
+  	const ReduxMixin = PolymerRedux(store);
+
+  	const ActionsMixin = (superClass) => {
+  		return class extends ReduxMixin(superClass) {
+			static get actions() {
+				return App.actions;
+			}
+  		};
+  	};
+
+  	App.store = store;
+  	App.ReduxMixin = Polymer.dedupingMixin(ActionsMixin);
+  })();
+</script>

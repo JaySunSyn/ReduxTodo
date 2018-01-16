@@ -1,0 +1,39 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="redux/redux-mixin.html">
+
+<dom-module id="todo-input">
+	<template>
+		<style>
+			:host {
+				display: block;
+				max-width: 400px;
+			}
+		</style>
+		<paper-input id="input" label="Add todo (press enter)" on-keydown="_addOnEnter"></paper-input>
+	</template>
+
+	<script>
+		class TodoInput extends ReduxMixin(Polymer.Element) {
+			static get is() {
+				return 'todo-input';
+			}
+
+			_addOnEnter(e) {
+				const input = this.$.input;
+				if (e.keyCode !== 13 || !input.value) {
+					return;
+				}
+		
+				// 'add' refers to the above created action
+				this.dispatch('add', input.value);
+
+				input.value = null;
+			}
+		}
+
+		window.customElements.define(TodoInput.is, TodoInput);
+	</script>
+</dom-module>

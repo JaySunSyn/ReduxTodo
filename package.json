@@ -1,7 +1,7 @@
 {
 	"name": "",
 	"version": "1.0.0",
-	"description": "[![Build Status](https://travis-ci.org/ElfyCares/elfy-address-input.svg?branch=master)](https://travis-ci.org/ElfyCares/elfy-address-input)",
+	"description": "Polymer 2 Redux, API Calls",
 	"main": "index.html",
 	"directories": {
 		"test": "test"
@@ -21,7 +21,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/elfycares/elfy-address-input.git"
+		"url": "git+https://github.com/JaySunSyn/ReduxTodo.git"
 	},
 	"keywords": [
 		"polymer",
@@ -30,9 +30,9 @@
 	"author": "",
 	"license": "Apache-2.0",
 	"bugs": {
-		"url": "https://github.com/elfycares/elfy-address-input/issues"
+		"url": "https://github.com/JaySunSyn/ReduxTodo/issues"
 	},
-	"homepage": "https://github.com/elfycares/elfy-address-input#readme",
+	"homepage": "https://github.com/JaySunSyn/ReduxTodo#readme",
 	"dependencies": {
 		"redux": "^3.7.2",
 		"redux-thunk": "^2.2.0",

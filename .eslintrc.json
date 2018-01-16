@@ -19,8 +19,10 @@
     ],
     "indent": [
       "error",
-      "tab"
+      "tab",
+      { "SwitchCase": 1 }
     ],
+    "indentSwitchCase": true,
     "no-tabs": 0,
     "brace-style": "off",
     "new-cap": ["error", { "capIsNewExceptions": ["Polymer", "PolymerRedux", "ReduxMixin"] }],

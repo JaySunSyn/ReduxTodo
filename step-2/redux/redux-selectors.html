@@ -1,0 +1,41 @@
+<script src="../../node_modules/reselect/dist/reselect.js"></script>
+
+<script>
+  (() => {
+  	const getTodos = (state) => {
+  		return state.todo.todos;
+  	};
+
+  	const getPeople = (state) => {
+  		return state.todo.people;
+  	};
+
+  	const todos = Reselect.createSelector([getTodos],
+  		(todos) => {
+  			return todos;
+  		}
+  	);
+
+  	const assignedTodos = Reselect.createSelector([getTodos, getPeople],
+  		(todos, people) => {
+  			const random = () => Math.floor(Math.random() * people.length);
+  			return todos.map(t => {
+  				t.text = `${t.text} => ${people[random()]}`;
+  				return t;
+  			});
+  		}
+  	);
+
+  	// const todosUpper = Reselect.createSelector([getTodos],
+  	// 	(todos) => {
+  	// 		return todos.map(t => t.toUpperCase());
+  	// 	}
+  	// );
+
+  	App.select = {
+  		todos,
+  		assignedTodos,
+		// todosUpper,
+  	};
+  })();
+</script>

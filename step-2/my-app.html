@@ -1,0 +1,27 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="todo-list.html">
+<link rel="import" href="todo-input.html">
+
+<dom-module id="my-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <todo-input></todo-input>
+    <todo-list></todo-list>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class MyApp extends Polymer.Element {
+    	static get is() {return 'my-app';}
+    }
+
+    window.customElements.define(MyApp.is, MyApp);
+  </script>
+</dom-module>

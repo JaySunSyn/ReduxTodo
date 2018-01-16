@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer-redux/polymer-redux.html">
+
+<script>
+	const initialState = {
+		todos: [
+			{text: 'Buy Veggies'},
+			{text: 'Buy Fruits'},
+			{text: 'Buy Pizza'},
+		],
+	};
+
+	const reducer = (state, action) => {
+		if (!state) {
+			return initialState;
+		}
+
+		let todos;
+
+		switch (action.type) {
+			case 'ADD_TODO':
+				todos = state.todos.slice(0);
+				todos.push(action.todo);
+				return Object.assign({}, state, {todos: todos});
+	
+			case 'REMOVE_TODO':
+				todos = state.todos.slice(0);
+				todos.splice(todos.indexOf(action.todo), 1);
+				return Object.assign({}, state, {todos: todos});
+			default:
+				return state;
+		}
+	};
+	
+	// Create a Redux store
+	const store = Redux.createStore(reducer);
+	const ReduxMixin = PolymerRedux(store);
+</script>

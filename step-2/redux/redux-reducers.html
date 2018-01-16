@@ -1,0 +1,48 @@
+<script src="../../node_modules/redux/dist/redux.min.js"></script>
+<script src="../../node_modules/redux-thunk/dist/redux-thunk.min.js"></script>
+
+<script>
+	(() => {
+		const initialState = {
+			todos: [
+				{text: 'Buy Veggies'},
+				{text: 'Buy Fruits'},
+				{text: 'Buy Pizza'},
+			],
+			people: [
+				'Jalal',
+				'Laila',
+				'Jamila',
+			],
+		};
+
+		const todoReducer = (state, action) => {
+			if (!state) {
+				return initialState;
+			}
+	
+			let todos;
+	
+			switch (action.type) {
+				case 'ADD_TODO':
+					todos = state.todos.slice(0);
+					todos.push(action.todo);
+					return Object.assign({}, state, {todos: todos});
+	
+				case 'REMOVE_TODO':
+					todos = state.todos.slice(0);
+					todos.splice(todos.indexOf(action.todo), 1);
+					return Object.assign({}, state, {todos: todos});
+				default:
+					return state;
+			}
+		};
+
+		App = window.App || {};
+
+		App.rootReducer = Redux.combineReducers({
+			todo: todoReducer,
+			// Another reducer ...
+		});
+	})();
+</script>
