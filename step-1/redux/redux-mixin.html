@@ -15,21 +15,17 @@
 			return initialState;
 		}
 
-		let todos;
+		const todos = state.todos.slice(0);
 
 		switch (action.type) {
 			case 'ADD_TODO':
-				todos = state.todos.slice(0);
 				todos.push(action.todo);
-				return Object.assign({}, state, {todos: todos});
-	
+				break;
 			case 'REMOVE_TODO':
-				todos = state.todos.slice(0);
 				todos.splice(todos.indexOf(action.todo), 1);
-				return Object.assign({}, state, {todos: todos});
-			default:
-				return state;
+				break;
 		}
+		return Object.assign({}, state, {todos: todos});
 	};
 	
 	// Create a Redux store

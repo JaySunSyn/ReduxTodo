@@ -41,6 +41,17 @@
 				};
 			}
 
+			static get actions() {
+				return {
+					remove: (todo) => {
+						return {
+							type: 'REMOVE_TODO',
+							todo: todo,
+						};
+					},
+				};
+			}
+
 			_remove(e) {
 				const todo = e.model.todo;
 				// 'remove' refers to the above created action

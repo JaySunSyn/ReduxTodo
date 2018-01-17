@@ -21,6 +21,17 @@
 				return 'todo-input';
 			}
 
+			static get actions() {
+				return {
+					add: (todo) => {
+						return {
+							type: 'ADD_TODO',
+							todo: {text: todo},
+						};
+					},
+				};
+			}
+
 			_addOnEnter(e) {
 				const input = this.$.input;
 				if (e.keyCode !== 13 || !input.value) {
