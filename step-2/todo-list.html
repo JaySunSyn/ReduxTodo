@@ -41,10 +41,6 @@
 				};
 			}
 
-			connectedCallback() {
-				super.connectedCallback();
-			}
-
 			_remove(e) {
 				this.dispatch(App.actions.remove(e.model.todo));
 			}
