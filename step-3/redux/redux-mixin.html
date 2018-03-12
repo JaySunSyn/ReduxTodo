@@ -22,8 +22,15 @@
 
 		const ActionsMixin = (superClass) => {
 			return class extends ReduxMixin(superClass) {
-				static get actions() {
-					return App.actions;
+				static get properties() {
+					return {
+						actions: {
+							type: Array,
+							value() {
+								return App.actions;
+							}
+						}
+					};
 				}
 			};
 		};
